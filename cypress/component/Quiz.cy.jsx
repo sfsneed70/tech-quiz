@@ -1,4 +1,3 @@
-
 import Quiz from "../../client/src/components/Quiz";
 
 const questions = [
@@ -23,8 +22,8 @@ const questions = [
 ];
 
 describe("Quiz", () => {
-  it("should render the Quiz component", () => {
-cy.mount(<Quiz />);
-  
+  it("should render the Quiz start page", () => {
+    cy.mount(<Quiz />);
+    cy.get('.btn').should('have.text', 'Start Quiz');
   });
 });
