@@ -18,12 +18,6 @@ describe("Quiz", () => {
       cy.get(".btn").should("have.text", "Start Quiz");
     });
 
-    // it("should render the first Quiz question card", () => {
-    //   cy.get(".btn").should("have.text", "Start Quiz").click();
-    //   cy.wait('@getQuestions');
-    //   cy.get(".card").should("be.visible");
-    // });
-
     it("verify contents of first question", () => {
       cy.get(".btn").should("have.text", "Start Quiz").click();
       cy.wait('@getQuestions');
@@ -46,7 +40,7 @@ describe("Quiz", () => {
       cy.wait('@getQuestions');
       // click answer 2 for all 10 questions
       for (let i = 0; i < 10; i++) {
-        cy.get(".btn").contains("1").click();
+        cy.get(".btn").contains("2").click();
       }
       cy.get("h2").should("have.text", "Quiz Completed");
       cy.get(".btn").should("have.text", "Take New Quiz").click();
