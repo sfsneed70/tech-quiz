@@ -1,29 +1,47 @@
 import Quiz from "../../client/src/components/Quiz";
-
-const questions = [
-  {
-    question: "What is the output of print(2 ** 3)?",
-    answers: [
-      { text: "6", isCorrect: false },
-      { text: "8", isCorrect: true },
-      { text: "9", isCorrect: false },
-      { text: "12", isCorrect: false },
-    ],
-  },
-  {
-    question: "Which of the following is a mutable data type in Python?",
-    answers: [
-      { text: "str", isCorrect: false },
-      { text: "tuple", isCorrect: false },
-      { text: "list", isCorrect: true },
-      { text: "int", isCorrect: false },
-    ],
-  },
-];
+import questions from "../fixtures/questions.json";
 
 describe("Quiz", () => {
-  it("should render the Quiz start page", () => {
-    cy.mount(<Quiz />);
-    cy.get('.btn').should('have.text', 'Start Quiz');
+  context("Quiz Setup", () => {
+    beforeEach(() => {
+      cy.intercept('GET', '/api/questions/random', (req) => {
+        req.reply({
+          statusCode: 200,
+          body: questions
+        });
+      }).as('getQuestions');
+
+      cy.mount(<Quiz />);
+    });
+
+    it("should render the Quiz start page", () => {
+      cy.get(".btn").should("have.text", "Start Quiz");
+    });
+
+    it("should render the first Quiz question card", () => {
+      cy.get(".btn").should("have.text", "Start Quiz").click();
+      cy.get(".card").should("be.visible");
+    });
+
+    it("should complete quiz and show results", () => {
+      cy.get(".btn").should("have.text", "Start Quiz").click();
+      // click answer 2 for all 10 questions
+      for (let i = 0; i < 10; i++) {
+        cy.get(".btn").contains("2").click();
+      }
+      cy.get("h2").should("have.text", "Quiz Completed");
+      cy.get(".btn").should("have.text", "Take New Quiz");
+    });
+
+    it("clicking take new quiz should start new quiz", () => {
+      cy.get(".btn").should("have.text", "Start Quiz").click();
+      // click answer 2 for all 10 questions
+      for (let i = 0; i < 10; i++) {
+        cy.get(".btn").contains("1").click();
+      }
+      cy.get("h2").should("have.text", "Quiz Completed");
+      cy.get(".btn").should("have.text", "Take New Quiz").click();
+      cy.get(".card").should("be.visible");
+    });
   });
 });

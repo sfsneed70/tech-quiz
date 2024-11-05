@@ -37,11 +37,11 @@ const Quiz = () => {
   };
 
   const handleStartQuiz = async () => {
-    await getRandomQuestions();
     setQuizStarted(true);
     setQuizCompleted(false);
     setScore(0);
     setCurrentQuestionIndex(0);
+    await getRandomQuestions();
   };
 
   if (!quizStarted) {
