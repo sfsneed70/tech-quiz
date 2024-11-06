@@ -2,7 +2,7 @@ import Quiz from "../../client/src/components/Quiz";
 import questions from "../fixtures/questions.json";
 
 describe("Quiz", () => {
-  context("Quiz Setup", () => {
+  context("Component Quiz Setup", () => {
     beforeEach(() => {
       cy.intercept('GET', '/api/questions/random', (req) => {
         req.reply({

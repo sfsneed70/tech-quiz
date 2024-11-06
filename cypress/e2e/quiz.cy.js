@@ -1,5 +1,5 @@
 describe("Quiz Test", () => {
-  context("Quiz Setup", () => {
+  context("e2e Quiz Setup", () => {
     beforeEach(() => {
       cy.visit("/");
     });
@@ -27,7 +27,7 @@ describe("Quiz Test", () => {
       cy.get(".btn").should("have.text", "Start Quiz").click();
       // click answer 2 for all 10 questions
       for (let i = 0; i < 10; i++) {
-        cy.get(".btn").contains("1").click();
+        cy.get(".btn").contains("2").click();
       }
       cy.get("h2").should("have.text", "Quiz Completed");
       cy.get(".btn").should("have.text", "Take New Quiz").click();
