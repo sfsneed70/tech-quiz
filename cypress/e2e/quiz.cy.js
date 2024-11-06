@@ -1,4 +1,4 @@
-describe("Quiz Test", () => {
+describe("Quiz e2e Test", () => {
   context("e2e Quiz Setup", () => {
     beforeEach(() => {
       // visit the app

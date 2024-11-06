@@ -1,7 +1,7 @@
 import Quiz from "../../client/src/components/Quiz";
 import questions from "../fixtures/questions.json";
 
-describe("Quiz", () => {
+describe("Quiz Component Test", () => {
   context("Component Quiz Setup", () => {
     beforeEach(() => {
       // intercept the GET request to /api/questions/random and return the questions fixture

@@ -6,7 +6,7 @@
 
 A tech quiz that asks the user 10 questions and displays a score at the end.
 
-Walkthrough Video:  
+Walkthrough Video:  https://drive.google.com/file/d/1JGdT7trZgh-nkrQiBlo24VT7-3EXswUZ/view?usp=drive_link
 
 ## Table of Contents
 
