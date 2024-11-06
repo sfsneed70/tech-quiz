@@ -17,6 +17,7 @@ describe("Quiz Test", () => {
       cy.get(".btn").should("have.text", "Start Quiz").click();
       // click answer 2 for all 10 questions
       for (let i = 0; i < 10; i++) {
+        cy.get(".card").should("be.visible");
         cy.get(".btn").contains("2").click();
       }
       cy.get("h2").should("have.text", "Quiz Completed");
@@ -27,6 +28,7 @@ describe("Quiz Test", () => {
       cy.get(".btn").should("have.text", "Start Quiz").click();
       // click answer 2 for all 10 questions
       for (let i = 0; i < 10; i++) {
+        cy.get(".card").should("be.visible");
         cy.get(".btn").contains("2").click();
       }
       cy.get("h2").should("have.text", "Quiz Completed");
